@@ -1,0 +1,27 @@
+= Dsl Helper
+
+== Usage
+
+  require 'dsl_helper'
+  
+  class MyDSLConfig
+  
+    include DslHelper
+    
+    dsl_attr :host, :port, :name
+  end
+  
+  config = MyDSLConfig.new.instance_eval do
+    host 'localhost'
+    port 11345
+    name 'my_network_thingy'
+  end
+  
+Then calls to the underscore versions of the attribute accessors work normally
+
+  config._host
+  
+Returns
+  
+  >> 'localhost'
+  
